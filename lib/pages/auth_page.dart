@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
-// charan raju
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +15,6 @@ class AuthPage extends StatelessWidget {
           if (snapshot.hasData) {
             return HomePage();
           }
-
           // user is not logged in
           else {
             return LoginPage();
