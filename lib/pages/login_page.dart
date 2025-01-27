@@ -15,6 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   // text editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
   // sign user in method
   void signUserIn() async {
     // show loading circle
@@ -26,22 +27,54 @@ class _LoginPageState extends State<LoginPage> {
         );
       },
     );
+
     //try sign in
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
+      // pop the loading cirlce
+      Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+
+      // wrong email
       if (e.code == 'user-not-found') {
-        print("No user found for that email");
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password buddy');
+        // show error to user
+        wrongEmailMessage();
+      }
+
+      // wrong password
+      else if (e.code == 'wrong-password') {
+        // show error to user
+        wrongPasswordMessage();
       }
     }
+  }
 
-    // pop the loading indicator
-    Navigator.of(context).pop();
+  //wrong email message popup
+  void wrongEmailMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Incorrect Email'),
+        );
+      },
+    );
+  }
+
+  //wrong email message popup
+  void wrongPasswordMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Incorrect Password'),
+        );
+      },
+    );
   }
 
   @override
