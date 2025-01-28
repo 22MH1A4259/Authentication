@@ -1,3 +1,5 @@
 {
-  "cmake.sourceDirectory": "C:/Users/rupun/OneDrive/Desktop/Flutter_september/authenticator/linux"
+  "cmake.sourceDirectory": "C:/Users/rupun/OneDrive/Desktop/Flutter_september/authenticator/linux",
+  "liveServer.settings.port": 5501,
+  "java.compile.nullAnalysis.mode": "automatic"
 }
