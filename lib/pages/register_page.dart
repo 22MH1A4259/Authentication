@@ -3,6 +3,7 @@
 import 'package:authenticator/components/my_button.dart';
 import 'package:authenticator/components/my_textfield.dart';
 import 'package:authenticator/components/square_tile.dart';
+import 'package:authenticator/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -173,12 +174,15 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // google button
-                    SquareTile(imagePath: 'lib/images/google.png'),
+                    SquareTile(
+                      onTap: () => AuthService().signInWithGoogle(),
+                      imagePath: 'lib/images/google.png',
+                    ),
 
                     const SizedBox(width: 25),
 
                     // apple button
-                    SquareTile(imagePath: "lib/images/apple.png")
+                    SquareTile(onTap: () {}, imagePath: "lib/images/apple.png")
                   ],
                 ),
 
